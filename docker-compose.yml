@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  app:
+    image: node:alpine
+    command: sh -c "npm i && npm run start:dev"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+  link-microservice:
+    image: redis:alpine
+    restart: always
+    command: redis-server
+    ports:
+      - 6379:6379
+    volumes:
+      - cache:/data
+volumes:
+  cache:
+    driver: local

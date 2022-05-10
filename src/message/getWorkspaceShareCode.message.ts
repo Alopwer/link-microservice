@@ -1,3 +1,6 @@
 export class GetWorkspaceShareCodeMessage {
-  constructor(public readonly workspaceId: string) {}
+  constructor(
+    public readonly workspaceId: string,
+    public readonly requesterId: string
+  ) {}
 }
